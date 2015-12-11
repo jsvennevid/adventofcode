@@ -6,17 +6,12 @@ base = ord('a')
 maxc = ord('z') - base
 
 def mutate(inp):
- data = list(reversed(inp))
- overflow = 1
- for i, c in enumerate(data):
-  if overflow == 0:
-   break
-  nc = (ord(c)-base)+overflow
-  overflow = max(0, nc - maxc)
-  data[i] = chr((nc % (maxc + 1)) + base)
- if overflow > 0:
-  data.append(chr((overflow - 1) + base))
- return "".join(reversed(data))
+ mutate.overflow = 1
+ def increment(v):
+  nc = (ord(v)-base)+mutate.overflow
+  mutate.overflow = max(0, nc - maxc)
+  return chr((nc % (maxc + 1)) + base)
+ return "".join(reversed(map(increment, reversed(inp))))
 
 iol = re.compile(r"[iol]")
 aabb = re.compile(r"(.)\1.*(.)\2")
