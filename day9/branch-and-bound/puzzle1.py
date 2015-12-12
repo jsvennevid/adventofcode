@@ -40,5 +40,4 @@ class SleighRouteCalculator:
 
 
 calculator = SleighRouteCalculator(os.path.join(os.path.dirname(os.path.realpath(__file__)), '../day9.txt'))
-print "Shortest:", calculator.search()[1]
-print "Longest:", calculator.search(compare = lambda x, y: x > y)[1]
+print "Shortest:", calculator.search()
