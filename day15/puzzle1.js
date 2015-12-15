@@ -1,14 +1,14 @@
 var fs = require('fs');
 
-var permute = function *(ingredients) {
- var state = new Array(ingredients.length - 1);
+function *permute(length) {
+ var state = new Array(length - 1);
  for (var i = 0; i < state.length; ++i) state[i] = 0;
  
  while (true) {
   for (var i = 0; i < state.length; ++i) {
    state[i]++;
-   if (state.reduce(function (curr, v) { return curr + v; }) < 100) break;
-   if (state[state.length-1] == 100) return;
+   if (state.reduce(function (curr, v) { return curr + v; }) <= 100) break;
+   if (state[state.length-1] > 100) return;
    state[i] = 0;
   }
 
@@ -35,9 +35,9 @@ fs.readFile('day15.txt', 'utf-8', function (err, inp) {
   }
  });
 
- var bestScore = 0, curr = 0;
- for (var p = permute(ingredients), state = p.next(); !state.done; state = p.next()) {
-  bestScore = Math.max(bestScore, getScore(ingredients, state.value));
+ var bestScore = 0;
+ for (var state of permute(ingredients.length)) {
+  bestScore = Math.max(bestScore, getScore(ingredients, state));
  }
  console.log(bestScore); 
 });
