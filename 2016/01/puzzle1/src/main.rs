@@ -85,7 +85,7 @@ impl State {
 }
 
 fn main() {
-	let ops = load("input.txt").unwrap_or(Vec::new());
+    let ops = load("../input.txt").unwrap_or(Vec::new());
 
     let mut state = State{x: 0, z: 0,dir: 0};
 
