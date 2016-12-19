@@ -1,0 +1,7 @@
+[package]
+name = "puzzle"
+version = "0.1.0"
+authors = ["Jesper Svennevid <jsvennevid@users.noreply.github.com>"]
+
+[dependencies]
+itertools = "0.5"
