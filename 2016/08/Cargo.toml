@@ -1,0 +1,8 @@
+[package]
+name = "puzzle"
+version = "0.1.0"
+authors = ["Jesper Svennevid <jsvennevid@users.noreply.github.com>"]
+
+[dependencies]
+lazy_static = "0.2.2"
+regex = "0.1"
